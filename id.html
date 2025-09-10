@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Photo Upload</title>
+</head>
+<body>
+
+    <h2>Upload Photo</h2>
+
+    <input type="file" onchange="showPhoto(this)" accept="image/*"><br><br>
+
+    <img id="photo" style="display:none; width:300px; border:1px solid #000;">
+
+    <script>
+        function showPhoto(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    var img = document.getElementById('photo');
+                    img.src = e.target.result;
+                    img.style.display = 'block';
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+
+</body>
+</html>
